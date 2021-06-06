@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="root" minHeight="700.0" minWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.valentinle.logiciel_coiffure.gui.DashboardController">
+   <children>
+      <StackPane>
+         <children>
+            <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_LEFT">
+               <children>
+                  <HBox alignment="CENTER" styleClass="client-counter">
+                     <children>
+                        <Label fx:id="clientsSize" alignment="CENTER" contentDisplay="CENTER">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="imClient">
+                           <image>
+                              <Image url="@../images/client.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="TOP_CENTER">
+               <children>
+                  <HBox spacing="8.0" styleClass="container">
+                     <children>
+                        <Button fx:id="badd" mnemonicParsing="false" onAction="#newClient">
+                           <tooltip>
+                              <Tooltip text="Nouveau client" />
+                           </tooltip>
+                           <styleClass>
+                              <String fx:value="badd" />
+                              <String fx:value="big-button" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="bfacturation" mnemonicParsing="false" onAction="#facturation">
+                           <tooltip>
+                              <Tooltip text="Facturer" />
+                           </tooltip>
+                           <styleClass>
+                              <String fx:value="bfacturation" />
+                              <String fx:value="big-button" />
+                           </styleClass>
+                        </Button>
+                        <Separator prefWidth="32.0" />
+                        <Button fx:id="bventes" mnemonicParsing="false" onAction="#openVentes">
+                           <tooltip>
+                              <Tooltip text="Menu des ventes" />
+                           </tooltip>
+                           <styleClass>
+                              <String fx:value="bventes" />
+                              <String fx:value="big-button" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="bstocks" mnemonicParsing="false" onAction="#openStocks">
+                           <tooltip>
+                              <Tooltip text="Stocks" />
+                           </tooltip>
+                           <styleClass>
+                              <String fx:value="bstocks" />
+                              <String fx:value="big-button" />
+                           </styleClass>
+                        </Button>
+                        <Separator prefWidth="32.0" />
+                        <Button mnemonicParsing="false" onAction="#manualSaveData">
+                           <tooltip>
+                              <Tooltip text="Sauvegarde manuelle des données" />
+                           </tooltip>
+                           <styleClass>
+                              <String fx:value="saveData" />
+                              <String fx:value="big-button" />
+                           </styleClass>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#openSave">
+                           <tooltip>
+                              <Tooltip text="Définir les dossiers de sauvegardes" />
+                           </tooltip>
+                           <styleClass>
+                              <String fx:value="savePoints" />
+                              <String fx:value="big-button" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <ImageView fx:id="imageLogo" fitHeight="112.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
+               <image>
+                  <Image url="@../images/logo_complexe.png" />
+               </image>
+            </ImageView>
+         </children>
+         <VBox.margin>
+            <Insets left="16.0" right="16.0" top="8.0" />
+         </VBox.margin>
+      </StackPane>
+      <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TextField fx:id="searchTextField" promptText="Rechercher...">
+                     <VBox.margin>
+                        <Insets bottom="8.0" />
+                     </VBox.margin></TextField>
+                  <ListView fx:id="clientsListView" onMouseClicked="#clientClick" styleClass="list" VBox.vgrow="ALWAYS" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" text="Chiffre d'affaire" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="8.0" right="8.0" top="8.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <GridPane minHeight="50.0">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="NEVER" />
+                      <RowConstraints minHeight="10.0" prefHeight="20.0" valignment="CENTER" vgrow="ALWAYS" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Journalière">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="caDay" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Mensuel" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="caMensuel" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Annuel" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="caAnnuel" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </GridPane.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="8.0" right="8.0" />
+                     </VBox.margin>
+                  </GridPane>
+                  <HBox alignment="CENTER" onMouseClicked="#openFacture">
+                     <children>
+                        <VBox styleClass="container">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Label text="Mensuel">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <HBox spacing="24.0">
+                                 <children>
+                                    <VBox alignment="CENTER" spacing="8.0">
+                                       <children>
+                                          <HBox spacing="8.0">
+                                             <children>
+                                                <StackPane>
+                                                   <children>
+                                                      <Circle fill="#ffca28" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" StackPane.alignment="CENTER" />
+                                                   </children>
+                                                </StackPane>
+                                                <Label fx:id="legendProdMonth">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox spacing="8.0">
+                                             <children>
+                                                <StackPane>
+                                                   <children>
+                                                      <Circle fill="#1e88e5" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" StackPane.alignment="CENTER" />
+                                                   </children>
+                                                </StackPane>
+                                                <Label fx:id="legendPrestaMonth" alignment="CENTER">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <PieChart fx:id="piechartMonth" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox styleClass="container">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Label text="Annuel">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <HBox spacing="24.0" styleClass="contaier">
+                                 <children>
+                                    <VBox alignment="CENTER" spacing="8.0">
+                                       <children>
+                                          <HBox spacing="8.0">
+                                             <children>
+                                                <StackPane>
+                                                   <children>
+                                                      <Circle fill="#ffca28" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" StackPane.alignment="CENTER" />
+                                                   </children>
+                                                </StackPane>
+                                                <Label fx:id="legendProdYear">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox spacing="8.0">
+                                             <children>
+                                                <StackPane>
+                                                   <children>
+                                                      <Circle fill="#1e88e5" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" StackPane.alignment="CENTER" />
+                                                   </children>
+                                                </StackPane>
+                                                <Label fx:id="legendPrestaYear" alignment="CENTER">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <PieChart fx:id="piechartYear" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="8.0">
+                     <children>
+                        <Label text="Factures">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Separator HBox.hgrow="ALWAYS" />
+                        <Label fx:id="gainsSelect">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Separator HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="comboMonth" styleClass="combo" />
+                        <ComboBox fx:id="comboYear" styleClass="combo" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <ListView fx:id="factureListView" onMouseClicked="#openFacture" VBox.vgrow="ALWAYS">
+                     <styleClass>
+                        <String fx:value="list" />
+                        <String fx:value="list-nobold" />
+                     </styleClass></ListView>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </HBox.margin></VBox>
+         </children>
+         <VBox.margin>
+            <Insets top="-32.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.valentinle.logiciel_coiffure.gui.ClientController">
+   <children>
+      <StackPane>
+         <children>
+            <Label fx:id="nameFamily" styleClass="title" StackPane.alignment="CENTER_LEFT">
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
+            </Label>
+            <HBox alignment="CENTER" maxWidth="-Infinity" spacing="8.0" styleClass="container" StackPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="bfacturation" mnemonicParsing="false" onAction="#facturation">
+                     <tooltip>
+                        <Tooltip text="Facturer le client" />
+                     </tooltip>
+                     <styleClass>
+                        <String fx:value="bfacturation" />
+                        <String fx:value="big-button" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="bdelete" mnemonicParsing="false" onAction="#deleteClient">
+                     <tooltip>
+                        <Tooltip text="Supprimer le client" />
+                     </tooltip>
+                     <styleClass>
+                        <String fx:value="bdelete" />
+                        <String fx:value="big-button" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </VBox.margin>
+      </StackPane>
+      <HBox VBox.vgrow="ALWAYS">
+         <children>
+            <VBox minWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label text="Nom" />
+                        <TextField fx:id="familyName" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Prénom" />
+                        <TextField fx:id="name" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Adresse" />
+                        <TextField fx:id="address" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Ville" />
+                        <TextField fx:id="city" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Code postal" />
+                        <TextField fx:id="postalCode" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Numéro de téléphone" />
+                        <TextField fx:id="phoneNumber" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Dernière visite :" />
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label fx:id="lastVisit" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Carte de fidélité :" />
+                        <HBox alignment="CENTER" spacing="8.0">
+                           <children>
+                              <Spinner fx:id="fidelity" maxWidth="70.0" />
+                              <Label fx:id="fidelityMax" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="8.0" left="8.0" top="8.0" />
+               </HBox.margin>
+            </VBox>
+            <Separator orientation="VERTICAL" styleClass="sep">
+               <HBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </HBox.margin>
+            </Separator>
+            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Recettes">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+                  <HBox alignment="CENTER" spacing="8.0">
+                     <children>
+                        <Button fx:id="badd" mnemonicParsing="false" onAction="#addRecipe">
+                           <tooltip>
+                              <Tooltip text="Ajouter une recette" />
+                           </tooltip>
+                           <styleClass>
+                              <String fx:value="badd" />
+                              <String fx:value="medium-button" />
+                           </styleClass></Button>
+                        <Button fx:id="bdelete" mnemonicParsing="false" onAction="#removeRecipe">
+                           <tooltip>
+                              <Tooltip text="Supprimer la recette sélectionnée" />
+                           </tooltip>
+                           <styleClass>
+                              <String fx:value="bdelete" />
+                              <String fx:value="medium-button" />
+                           </styleClass></Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox VBox.vgrow="ALWAYS">
+                     <children>
+                        <ListView fx:id="recipesListView" onMouseClicked="#recipeClick" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets bottom="8.0" right="8.0" top="8.0" />
+                           </HBox.margin>
+                           <styleClass>
+                              <String fx:value="list" />
+                              <String fx:value="list-nobold" />
+                           </styleClass></ListView>
+                        <VBox>
+                           <children>
+                              <Label text="Date" />
+                              <DatePicker fx:id="dateRecipe" />
+                              <Label text="Recette">
+                                 <VBox.margin>
+                                    <Insets top="8.0" />
+                                 </VBox.margin></Label>
+                              <TextArea fx:id="textRecipe" maxHeight="200.0" maxWidth="250.0" minHeight="200.0" minWidth="250.0" />
+                              <Label text="Temps">
+                                 <VBox.margin>
+                                    <Insets top="8.0" />
+                                 </VBox.margin></Label>
+                              <TextField fx:id="timeRecipe" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="8.0" top="8.0" />
+               </HBox.margin>
+            </VBox>
+            <Separator orientation="VERTICAL" styleClass="sep">
+               <HBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </HBox.margin>
+            </Separator>
+            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Produits vendus">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+                  <ListView fx:id="productsSoldListView" focusTraversable="false" VBox.vgrow="ALWAYS">
+                     <styleClass>
+                        <String fx:value="list" />
+                        <String fx:value="list-noselect" />
+                        <String fx:value="list-nobold" />
+                     </styleClass>
+                     <VBox.margin>
+                        <Insets bottom="8.0" />
+                     </VBox.margin></ListView>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="8.0" right="8.0" top="8.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" spacing="8.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#valid">
+               <styleClass>
+                  <String fx:value="bvalid" />
+                  <String fx:value="big-button" />
+               </styleClass>
+               <tooltip>
+                  <Tooltip text="Valider les changements" />
+               </tooltip></Button>
+            <Button mnemonicParsing="false" onAction="#cancel">
+               <styleClass>
+                  <String fx:value="bcancel" />
+                  <String fx:value="big-button" />
+               </styleClass>
+               <tooltip>
+                  <Tooltip text="Annuler les changements" />
+               </tooltip></Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="8.0" left="8.0" right="8.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

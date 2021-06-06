@@ -1,0 +1,499 @@
+
+/*
+green bvalid #43A047
+red cancel #C62828
+green dark #193B1A
+*/
+
+* {
+  -primary-color: "#eeeeee";
+  -primary-color-light: "#ffffff";
+  -accent-color: rgb(67,160, 71);
+  -accent-color-low: rgba(67, 160, 71, 0.4);
+  -accent-color-medium: rgba(67, 160, 71, 0.6);
+  -accent-color-high: rgba(67, 160, 71, 0.7);
+  -button-color: "#d7ccc8";
+  -button-color-pressed: "#c9bbb6";
+  -button-color-hover: "#e4ddda";
+  -text-color: black;
+  -light-gray: rgba(255, 255, 255, 0.25);
+  -fx-focus-color: transparent;
+  -fx-faint-focus-color: transparent;
+  -fx-border-color: transparent;
+  -fx-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.root {
+  -fx-background-color: -primary-color;
+}
+
+.container {
+  -fx-background-color: -primary-color-light;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.14), 10, 0.2, 2, 0);
+  -fx-background-radius: 6px;
+  -fx-padding: 8px;
+}
+
+.sep {
+  -fx-padding: -3px;
+  -fx-background-color: #E0E0E0;
+  -fx-background-radius: 16px;
+}
+
+
+/*
+=================== BUTTONS
+*/
+
+.big-button, .medium-button {
+  -fx-background-color: -button-color;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.14), 10, 0.2, 2, 0);
+  -fx-cursor:hand;
+}
+
+.big-button:hover, .medium-button:hover {
+  -fx-scale-x: 1.02;
+  -fx-scale-y: 1.02;
+  -fx-scale-z: 1.02;
+}
+
+.big-button:pressed, .medium-button:pressed {
+  -fx-scale-x: 0.98;
+  -fx-scale-y: 0.98;
+  -fx-scale-z: 0.98;
+}
+
+.big-button {
+  -fx-background-radius: 4px;
+  -fx-background-size: 35px;
+  -fx-min-width: 50px;
+  -fx-min-height: 50px;
+  -fx-max-width: 50px;
+  -fx-max-height: 50px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+}
+
+.medium-button {
+  -fx-background-radius: 4px;
+  -fx-background-size: 24px;
+  -fx-min-width: 32px;
+  -fx-min-height: 32px;
+  -fx-max-width: 32px;
+  -fx-max-height: 32px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+}
+
+.badd {
+  -fx-background-color: linear-gradient(to top left, #43a047, #66bb6a);
+  -fx-background-image: url('/resources/images/add.png');
+}
+
+.bfacturation {
+  -fx-background-color: linear-gradient(to top left, #43a047, #66bb6a);
+  -fx-background-image: url('/resources/images/facture.png');
+}
+
+.bfacturer{
+  -fx-background-color: linear-gradient(to top left, #43a047, #66bb6a);
+  -fx-background-image: url('/resources/images/facturer.png');
+}
+
+.bventes {
+  -fx-background-color: linear-gradient(to top left, #9C27B0, #BA68C8);
+  -fx-background-image: url('/resources/images/menu.png');
+}
+
+.bstocks {
+  -fx-background-color: linear-gradient(to top left, #9C27B0, #BA68C8);
+  -fx-background-image: url('/resources/images/inventory.png');
+}
+
+.bdelete {
+  -fx-background-color: linear-gradient(to top left, #e53935, #ef5350);
+  -fx-background-image: url('/resources/images/delete.png');
+}
+
+.saveData {
+  -fx-background-color: linear-gradient(to top left, #1565C0, #2196F3);
+  -fx-background-image: url('/resources/images/save.png');
+}
+
+.savePoints {
+  -fx-background-color: linear-gradient(to top left, #1565C0, #2196F3);
+  -fx-background-image: url('/resources/images/save_points.png');
+}
+
+.bmodify {
+  -fx-background-color: linear-gradient(to top left, #fb8c00, #ffa726);
+  -fx-background-image: url('/resources/images/modify.png');
+}
+
+.bvalid {
+  -fx-background-color: linear-gradient(to top left,#43a047,#66bb6a);
+  -fx-background-image: url('/resources/images/valid.png');
+}
+
+.bcancel {
+  -fx-background-color: linear-gradient(to top left, #e53935, #ef5350);
+  -fx-background-image: url('/resources/images/cancel.png');
+}
+
+
+/*
+ ================== SCROLLBAR
+*/
+
+.scroll-bar {
+  -fx-background-color: transparent;
+  -fx-padding: 0 0 0 4px;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .increment-button,
+.scroll-bar:horizontal .decrement-button,
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+  -fx-background-color: transparent;
+  -fx-padding: 0;
+
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+  -fx-shape: " ";
+  -fx-padding: 0 6px 0 6px;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+  -fx-background-color : #aaaaaa;
+  -fx-background-radius : 8px;
+}
+
+/*
+ ================== LISTVIEW
+*/
+
+.list {
+  -fx-background-radius: 6px;
+  -fx-background-insets: 0;
+  -fx-padding: 4px;
+  -fx-background-color: -primary-color-light;
+}
+
+.list:focused {
+  -fx-border-radius: 6px;
+}
+
+.list .list-cell {
+  -fx-background-color: transparent;
+  -fx-text-fill: -text-color;
+  -fx-font-weight: bold;
+  -fx-background-radius: 6px;
+  -fx-padding: 4px 8px;
+}
+
+.list .list-cell .label {
+  -fx-text-fill: -text-color;
+  -fx-font-weight: bold;
+}
+
+.list .list-cell:filled:hover {
+  -fx-background-color: #E0E0E0;
+}
+
+.list .list-cell:filled:selected {
+  -fx-background-color: linear-gradient(to top left, #66bb6a, #43a047);
+  -fx-text-fill: white;
+}
+
+.list .list-cell:filled:selected .label {
+  -fx-text-fill: white;
+}
+
+.list-nobold .list-cell {
+  -fx-font-weight: normal;
+}
+
+.list-nobold .list-cell .label {
+  -fx-font-weight: normal;
+}
+
+.list-nobold .list-cell:filled:selected {
+  -fx-text-fill: white;
+}
+
+.list-nobold .list-cell:filled:selected .label {
+  -fx-text-fill: white;
+}
+
+.list-noselect .list-cell:filled:hover {
+  -fx-background-color: transparent;
+}
+
+.list-noselect .list-cell:filled:selected {
+  -fx-background-color: transparent;
+  -fx-text-fill: -text-color;
+}
+
+.list-noselect .list-cell:filled:selected .label {
+  -fx-text-fill: -text-color;
+}
+
+.listprod .list-cell .label {
+  -fx-font-weight: normal;
+}
+
+.listprod #quantity {
+  -fx-font-weight: bold;
+}
+
+.listprod #name {
+  -fx-font-weight: bold;
+  -fx-font-size: 14px;
+}
+
+.listprod #type {
+  -fx-font-size: 12px;
+}
+
+.listprod #price {
+  -fx-font-weight: bold;
+  -fx-font-size: 16px;
+}
+
+/*
+ ================== INPUTS
+*/
+
+.text-field {
+  -fx-background-radius: 4px;
+  -fx-background-insets: 0;
+  -fx-background-color: -primary-color-light;
+  -fx-text-box-border: transparent;
+  -fx-text-fill: -text-color;
+  -fx-padding: 6px 8px 6px 8px;
+  -fx-highlight-fill: -accent-color-high;
+}
+
+.text-area {
+  -fx-background-radius: 4px;
+  -fx-background-insets: 0;
+  -fx-background-color: -primary-color-light;
+  -fx-text-box-border: transparent;
+  -fx-text-fill: -text-color;
+  -fx-highlight-fill: -accent-color-high;
+}
+
+.text-area .content {
+  -fx-background-color: -primary-color-light;
+}
+
+.check-box > .box {
+  /* background color of unselected checkbox */
+  -fx-background-color: linear-gradient(to top left, #fb8c00, #ffa726);
+}
+
+.check-box:selected > .box > .mark,
+.check-box:indeterminate  > .box > .mark {
+    /* modify mark color */
+    -fx-background-color: white;
+}
+
+/*
+ ================== COMBOBOX
+*/
+
+.combo {
+  -fx-background-color: linear-gradient(to top left, #ffa726, #fb8c00);
+  -fx-cursor:hand;
+  -fx-min-height: 40px;
+  -fx-max-height: 40px;
+}
+
+.combo .list-view {
+  -fx-background-radius: 4px;
+  -fx-background-insets: 0;
+  -fx-padding: 4px;
+  -fx-background-color: -primary-color-light;
+}
+
+.combo .list-cell {
+  -fx-background-color: transparent;
+  -fx-text-fill: -text-color;
+  -fx-background-radius: 4px;
+  -fx-padding: 8px;
+}
+
+.combo > .list-cell {
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+}
+
+.combo .list-view .list-cell:hover {
+  -fx-background-color: #E0E0E0;
+}
+
+.combo .list-view .list-cell:selected {
+  -fx-background-color: linear-gradient(to top left, #66bb6a, #43a047);
+  -fx-text-fill: white;
+}
+
+/*
+ ================== DATEPICKER
+*/
+
+.date-picker {
+  -fx-background-color: transparent;
+}
+.date-picker > .arrow-button {
+  -fx-background-color: linear-gradient(to top left, #fb8c00, #ffa726);
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.14), 10, 0.2, 2, 0);
+  -fx-cursor:hand;
+}
+
+.date-picker-popup {
+    -fx-padding: 1;
+    -fx-background-color: lightgray;
+}
+
+.date-picker-popup > .month-year-pane {
+    -fx-padding: 4;
+    -fx-background-color: #EFEFEF;
+}
+
+.date-picker-popup > .month-year-pane > .spinner {
+    -fx-spacing: 4;
+    -fx-alignment: CENTER;
+    -fx-fill-height: false;
+}
+
+.date-picker-popup > .month-year-pane > .spinner > .spinner-label {
+    -fx-font-size: 1.083333em;
+    -fx-alignment: CENTER;
+    -fx-text-fill: #606060;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup > .month-year-pane > .spinner > .left-button {
+    -fx-padding: 4 6;
+}
+
+.date-picker-popup > .month-year-pane > .spinner > .right-button {
+    -fx-padding: 4 6;
+}
+
+.date-picker-popup > .month-year-pane > .spinner > .button > .left-arrow {
+    -fx-background-color: #606060;
+    -fx-background-insets: 0;
+    -fx-padding: 0.333em 0.167em 0.333em 0.167em;
+    -fx-shape: "M5.997,5.072L5.995,6.501l-2.998-4l2.998-4l0.002,1.43l-1.976,2.57L5.997,5.072z";
+    -fx-scale-shape: true;
+}
+
+.date-picker-popup > .month-year-pane > .spinner > .button > .right-arrow {
+    -fx-background-color: #606060;
+    -fx-background-insets: 0;
+    -fx-padding: 0.333em 0.167em 0.333em 0.167em;
+    -fx-shape: "M2.998-0.07L3-1.499l2.998,4L3,6.501l-0.002-1.43l1.976-2.57L2.998-0.07z";
+    -fx-scale-shape: true;
+}
+
+.date-picker-popup > * > .cell {
+    -fx-padding: 0 7;
+    -fx-alignment: BASELINE_CENTER;
+}
+
+.date-picker-popup > * > .cell:disabled > * {
+    /* This is set on the cell's children so the border is not affected. */
+    -fx-opacity: 0.4;
+}
+
+.date-picker-popup > * > .week-number-header-cell,
+.date-picker-popup > * > .day-name-cell {
+    -fx-font-size: 0.833333em;
+    -fx-padding: 0;
+    -fx-text-fill: #0070C0;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup > * > .week-number-cell {
+    -fx-font-size: 0.75em;
+    -fx-padding: 0;
+}
+
+.date-picker-popup > * > .day-cell {
+    -fx-text-fill: black;
+    -fx-border-color: lightgray;
+    -fx-border-width: 1;
+    -fx-border-insets: 0;
+}
+
+.date-picker-popup > * > .hijrah-day-cell {
+    -fx-alignment: TOP_LEFT;
+    -fx-cell-size: 2.75em;
+}
+
+.date-picker-popup > * > .day-cell:focused {
+    -fx-background-color: #CCE8FF;
+}
+
+.date-picker-popup > * > .day-cell:hover {
+    -fx-background-color: #EFEFEF;
+}
+
+.date-picker-popup > * > .day-cell > .secondary-text {
+    -fx-font-size: 1.0em;
+    -fx-fill: #ff5050;
+}
+
+.date-picker-popup > * > .today {
+    -fx-background-insets: 1;
+    -fx-border-color: #606060;
+    -fx-border-insets: 1;
+}
+
+.date-picker-popup > * > .today:focused {
+    -fx-background-color: -accent-color-low;
+}
+
+.date-picker-popup > * > .previous-month,
+.date-picker-popup > * > .next-month {
+    -fx-text-fill: #aaaaaa;
+}
+
+.date-picker-popup > * > .previous-month > .secondary-text,
+.date-picker-popup > * > .next-month > .secondary-text {
+    -fx-fill: #aaaaaa;
+}
+
+.chart-pie {
+    -fx-border-color: derive(-fx-pie-color, 10%);
+    -fx-border-width: 2px;
+}
+
+.chart-pie-label-line {
+    -fx-stroke: black;
+    -fx-fill: black;
+}
+
+.default-color0.chart-pie, .default-color2.chart-pie, .default-color4.chart-pie,
+.default-color6.chart-pie, .default-color8.chart-pie, .default-color10.chart-pie { 
+  -fx-pie-color: #1E88E5;
+}
+
+.default-color1.chart-pie, .default-color3.chart-pie, .default-color5.chart-pie,
+.default-color7.chart-pie, .default-color9.chart-pie, .default-color11.chart-pie {
+  -fx-pie-color: #FFCA28;
+}
+
+.list, .combo, .text-field, .text-area {
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.14), 10, 0.2, 2, 0);
+}

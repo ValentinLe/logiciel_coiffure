@@ -1,0 +1,7 @@
+libs/
+target/
+.classpath
+.project
+.settings/
+data/
+config/
