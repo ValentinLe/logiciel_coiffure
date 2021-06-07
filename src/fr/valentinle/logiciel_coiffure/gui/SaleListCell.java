@@ -85,6 +85,7 @@ public class SaleListCell extends ListCell<Sale> {
 	    setGraphic(this.gridpane);
 	} else {
 	    // sinon on affiche rien
+		this.quantity.setText("");
 	    this.name.setText("");
 	    this.price.setText("");
 	    this.type.setText("");

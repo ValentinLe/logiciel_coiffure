@@ -254,7 +254,7 @@ public class FacturationController implements Initializable {
 	    int index = this.listViewSales.getSelectionModel().getSelectedIndex();
 	    if (index >= 0) {
 		this.facture.addSale(this.listViewSales.getSelectionModel().getSelectedItem());
-		this.price.setText("" + this.facture.getAmount());
+		this.price.setText("" + (Math.round(100.0 * this.facture.getAmount()) / 100.0));
 	    }
 
 	}
