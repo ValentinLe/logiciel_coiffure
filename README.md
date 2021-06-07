@@ -33,5 +33,5 @@
 ## Sauvegardes des données
 
 <div align="center">
-<img src="https://github.com/ValentinLe/logiciel_coiffure/blob/main/screenshots/stocks.png" alt="demo" width="602" height="398">
+<img src="https://github.com/ValentinLe/logiciel_coiffure/blob/main/screenshots/sauvegarde.png" alt="demo" width="602" height="398">
 </div>
