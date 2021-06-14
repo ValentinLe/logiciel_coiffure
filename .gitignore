@@ -5,3 +5,4 @@ target/
 .settings/
 data/
 config/
+.vscode/

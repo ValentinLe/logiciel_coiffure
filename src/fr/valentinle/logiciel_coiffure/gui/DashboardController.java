@@ -45,7 +45,7 @@ public class DashboardController implements Initializable, DashboardListener {
 	protected Dashboard dashboard;
 
 	@FXML
-	protected ListView clientsListView;
+	protected ListView<Client> clientsListView;
 
 	@FXML
 	protected Label clientsSize;
@@ -60,7 +60,7 @@ public class DashboardController implements Initializable, DashboardListener {
 	protected Label caAnnuel;
 
 	@FXML
-	protected ListView factureListView;
+	protected ListView<Facture> factureListView;
 
 	@FXML
 	protected TextField searchTextField;
@@ -136,7 +136,50 @@ public class DashboardController implements Initializable, DashboardListener {
 		FactureCellFactory factureCellFactory = new FactureCellFactory(dashboard, this.filteredListFactures);
 		this.factureListView.setCellFactory(factureCellFactory);
 		this.writeCa();
+
+		this.comboMonth.valueProperty().addListener((observable, oldValue, newValue) -> {
+			Map<Integer, Map<Integer, LocalDate>> mapDates = dashboard.getMapMonthYearFactures();
+			filteredListFactures.setPredicate(facture -> {
+				Integer month = newValue;
+				Integer year = comboYear.getSelectionModel().getSelectedItem();
+				if (month == null || year == null) {
+					return true;
+				}
+				return facture.getDate().getMonthValue() == month && facture.getDate().getYear() == year;
+			});
+			this.factureListView.refresh();
+			this.updateLabelGainsOfSelection();
+			this.drawChartMonth();
+		});
+
+		this.comboYear.valueProperty().addListener((observable, oldValue, newValue) -> {
+			Map<Integer, Map<Integer, LocalDate>> mapDates = dashboard.getMapMonthYearFactures();
+			if (mapDates.containsKey(newValue)) {
+				List<Integer> values = new ArrayList<>(mapDates.get(newValue).keySet());
+				values.sort(new Comparator<Integer>() {
+					@Override
+					public int compare(Integer o1, Integer o2) {
+						return o1.compareTo(o2);
+					}
+				}.reversed());
+				this.comboMonth.setItems(FXCollections.observableList(values));
+				this.comboMonth.getSelectionModel().selectFirst();
+			}
+			filteredListFactures.setPredicate(facture -> {
+				Integer month = comboMonth.getSelectionModel().getSelectedItem();
+				Integer year = newValue;
+				if (month == null || year == null) {
+					return true;
+				}
+				return facture.getDate().getMonthValue() == month && facture.getDate().getYear() == year;
+			});
+			this.factureListView.refresh();
+			this.updateLabelGainsOfSelection();
+			this.drawChartMonth();
+		});
+		
 		this.comboboxDates();
+
 		this.drawCharts();
 
 		this.loadConfig();
@@ -223,7 +266,6 @@ public class DashboardController implements Initializable, DashboardListener {
 			}
 			return facture.getDate().getMonthValue() == month && facture.getDate().getYear() == year;
 		});
-
 		this.factureListView.setItems(this.filteredListFactures);
 		this.comboYear.setItems(FXCollections.observableList(dashboard.getFacturesYears()));
 		this.comboYear.getSelectionModel().selectFirst();
@@ -240,49 +282,7 @@ public class DashboardController implements Initializable, DashboardListener {
 			this.comboMonth.setItems(FXCollections.observableList(new ArrayList<>(values)));
 			this.comboMonth.getSelectionModel().selectFirst();
 		}
-
-		this.comboMonth.valueProperty().addListener((observable, oldValue, newValue) -> {
-			Map<Integer, Map<Integer, LocalDate>> mapDates = dashboard.getMapMonthYearFactures();
-			filteredListFactures.setPredicate(facture -> {
-				Integer month = newValue;
-				Integer year = comboYear.getSelectionModel().getSelectedItem();
-				if (month == null || year == null) {
-					return true;
-				}
-				return facture.getDate().getMonthValue() == month && facture.getDate().getYear() == year;
-			});
-			this.factureListView.refresh();
-			this.updateLabelGainsOfSelection();
-			this.drawChartMonth();
-		});
-
 		this.comboMonth.setConverter(new IntegerMonthConverter());
-
-		this.comboYear.valueProperty().addListener((observable, oldValue, newValue) -> {
-			Map<Integer, Map<Integer, LocalDate>> mapDates = dashboard.getMapMonthYearFactures();
-			if (mapDates.containsKey(newValue)) {
-				List<Integer> values = new ArrayList<>(mapDates.get(newValue).keySet());
-				values.sort(new Comparator<Integer>() {
-					@Override
-					public int compare(Integer o1, Integer o2) {
-						return o1.compareTo(o2);
-					}
-				}.reversed());
-				this.comboMonth.setItems(FXCollections.observableList(values));
-				this.comboMonth.getSelectionModel().selectFirst();
-			}
-			filteredListFactures.setPredicate(facture -> {
-				Integer month = comboMonth.getSelectionModel().getSelectedItem();
-				Integer year = newValue;
-				if (month == null || year == null) {
-					return true;
-				}
-				return facture.getDate().getMonthValue() == month && facture.getDate().getYear() == year;
-			});
-			this.factureListView.refresh();
-			this.updateLabelGainsOfSelection();
-			this.drawChartMonth();
-		});
 		this.updateLabelGainsOfSelection();
 	}
 
@@ -402,12 +402,6 @@ public class DashboardController implements Initializable, DashboardListener {
 			stage.setScene(scene);
 			stage.initOwner((Stage) this.clientsListView.getScene().getWindow());
 			stage.initModality(Modality.APPLICATION_MODAL);
-			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-				@Override
-				public void handle(WindowEvent t) {
-					dashboard.saveClients();
-				}
-			});
 			stage.centerOnScreen();
 			stage.show();
 		} catch (IOException ex) {

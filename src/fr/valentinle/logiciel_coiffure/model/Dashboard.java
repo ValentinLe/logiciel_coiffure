@@ -413,15 +413,17 @@ public class Dashboard extends AbstractListenableDashboard {
 		return ret;
 	}
 
-	public boolean removeClient(Client client) {
-		boolean r = this.removeClient(client, false);
-		return r;
+	public void removeClient(Client client) {
+		this.removeClient(client, false);
 	}
 
-	public boolean removeClient(Client client, boolean saveToFile) {
-		boolean ret = this.clients.remove(client);
+	public void removeClient(Client client, boolean saveToFile) {
+		try {
+			this.clients.remove(client);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		this.clientsListUpdated(saveToFile);
-		return ret;
 	}
 
 	public void clientsListUpdated(boolean saveToFile) {
