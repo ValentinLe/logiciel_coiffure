@@ -44,12 +44,12 @@ Quand une facture est ajouté, les produits vendus seront décrémenté des stoc
 
 ## Sauvegardes des données
 
-Nayant pas de base de données, ni de serveur, les données sont sauvegardés localement. Donc afin d'avoir une réplication des données nous avons mis en place un système de sauvegarde des clients, des factures et du menu de ventes. Cette sauvegarde peut être effectuée sur plusieurs endroits de l'ordinateur (comme par exemple dans Documents/ ou dans un dossier sur une clé USB).
+Nayant pas moyen de mettre en place une base de données, ni de serveur, les données sont sauvegardés localement. Donc afin d'avoir une réplication des données nous avons mis en place un système de sauvegarde des clients, des factures et du menu de ventes. Cette sauvegarde peut être effectuée sur plusieurs endroits de l'ordinateur (comme par exemple dans Documents/ ou dans un dossier sur une clé USB).
 
 <div align="center">
 <img src="https://github.com/ValentinLe/logiciel_coiffure/blob/main/screenshots/sauvegarde.png" alt="demo" width="602" height="398">
 </div>
 
-## compiler et lancer le programme
+## Compiler et lancer le programme
 
 Le projet est un projet <a href="https://maven.apache.org/">Maven<a/>, il y a deux scripts dans le dossier scripts/ un pour compiler et un pour lancer le programme.
