@@ -49,3 +49,7 @@ Nayant pas de base de données, ni de serveur, les données sont sauvegardés lo
 <div align="center">
 <img src="https://github.com/ValentinLe/logiciel_coiffure/blob/main/screenshots/sauvegarde.png" alt="demo" width="602" height="398">
 </div>
+
+## compiler et lancer le programme
+
+Le projet est un projet <a href="https://maven.apache.org/">Maven<a/>, il y a deux scripts dans le dossier scripts/ un pour compiler et un pour lancer le programme.
