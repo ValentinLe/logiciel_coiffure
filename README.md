@@ -1,6 +1,6 @@
 # logiciel_coiffure
 
-Logiciel destiné au salon de coiffure Éclat Ô Naturel, permettant d'enregistrer les clients, les factures, de gérer l'inventaire automatiquement et avoir un retour sur le chiffre d'affaire.
+Logiciel destiné au salon de coiffure Éclat Ô Naturel, permettant d'enregistrer les clients, les factures, de gérer l'inventaire automatiquement et avoir un retour sur le chiffre d'affaires.
 
 ## Dashboard
 
