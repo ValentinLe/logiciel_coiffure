@@ -30,6 +30,8 @@ public class Client extends AbstractListenableClient {
     protected List<Recipe> recipes;
     
     protected List<String> productsSold;
+
+	protected String memo;
     
     public final static int MAX_FIDELITY = 7;
 
@@ -44,7 +46,8 @@ public class Client extends AbstractListenableClient {
 	    LocalDate lastVisitDate, 
 	    int fidelity, 
 	    List<Recipe> recipes, 
-	    List<String> productsSold) {
+	    List<String> productsSold,
+		String memo) {
 	
 	this.id = id;
 	this.name = StringUtils.capitalize(name);
@@ -57,10 +60,11 @@ public class Client extends AbstractListenableClient {
 	this.fidelity = fidelity;
 	this.recipes = recipes;
 	this.productsSold = productsSold;
+	this.memo = memo;
     }
     
     public Client(long id) {
-	this(id, "", "", "", "", "", "", null, 0, new ArrayList<>(), new ArrayList<>());
+	this(id, "", "", "", "", "", "", null, 0, new ArrayList<>(), new ArrayList<>(), "");
     }
 
     public long getId() {
@@ -111,6 +115,10 @@ public class Client extends AbstractListenableClient {
 	return productsSold;
     }
 
+	public String getMemo(){
+		return memo;
+	}
+
     public void setId(int id) {
 	this.id = id;
     }
@@ -154,6 +162,10 @@ public class Client extends AbstractListenableClient {
     public void setProductsSold(List<String> productsSold) {
 	this.productsSold = productsSold;
     }
+
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
     
     public boolean freePrestation() {
 	return this.fidelity == MAX_FIDELITY;

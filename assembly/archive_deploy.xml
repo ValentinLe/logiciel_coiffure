@@ -31,10 +31,7 @@
 
     <files>
         <file>
-            <source>creer_raccourci_bureau.vbs</source>
-        </file>
-        <file>
-            <source>lancer_logiciel.vbs</source>
+            <source>lancer_logiciel.sh</source>
         </file>
     </files>
 </assembly>

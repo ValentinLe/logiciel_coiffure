@@ -96,6 +96,9 @@ public class ClientController implements Initializable, DashboardListener, Clien
 	@FXML
 	private Label nameFamily;
 
+	@FXML
+	private TextArea memo;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.familyName.setTextFormatter(new TextFormatter<>((change) -> {
@@ -172,6 +175,7 @@ public class ClientController implements Initializable, DashboardListener, Clien
 				Client.MAX_FIDELITY, this.client.getFidelity());
 		this.fidelity.setValueFactory(valueFactory);
 		this.fidelityMax.setText(" / " + Client.MAX_FIDELITY);
+		this.memo.setText(client.getMemo());
 		this.client.addListener(this);
 	}
 
@@ -199,12 +203,13 @@ public class ClientController implements Initializable, DashboardListener, Clien
 			this.client.setCity(this.city.getText().trim());
 			this.client.setPostalCode(this.postalCode.getText().trim());
 			this.client.setPhoneNumber(this.phoneNumber.getText().trim());
+			this.client.setMemo(this.memo.getText());
 
 			if (!this.dashboard.clientExists(this.client)) {
 				this.dashboard.addClient(this.client, true);
 				Collections.sort(this.dashboard.getClients(), this.dashboard.getClientComparator());
 			}
-			this.dashboard.clientsListUpdated(false);
+			this.dashboard.clientsListUpdated(true);
 			return true;
 		} else {
 			return false;

@@ -15,9 +15,9 @@ public class Main {
 	Recipe r1 = new Recipe(LocalDate.now(), "30g de machin", "35 min");
 	Recipe r2 = new Recipe(LocalDate.now(), "5g de truc", "1h45");
 	
-	Client c2 = new Client(2, "patrick", "morice", "10 rue dampierre", "paris", "27320", "06.00.00.00.00", LocalDate.now(), 2, Arrays.asList(r1), new ArrayList<>());
+	Client c2 = new Client(2, "patrick", "morice", "10 rue dampierre", "paris", "27320", "06.00.00.00.00", LocalDate.now(), 2, Arrays.asList(r1), new ArrayList<>(), "");
 	
-	Client c3 = new Client(3, "jack", "yola", "48 rue joter", "marseille", "23454", "06.23.65.24.96", LocalDate.now(), 5, Arrays.asList(r2), new ArrayList<>());
+	Client c3 = new Client(3, "jack", "yola", "48 rue joter", "marseille", "23454", "06.23.65.24.96", LocalDate.now(), 5, Arrays.asList(r2), new ArrayList<>(), "");
 	
 	List<Client> clients = Arrays.asList(c1, c2, c3);
 	
