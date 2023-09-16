@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 public class JSONReader<T> {
     
     public T read(String filename, Type type) {
+		System.out.println("Read " + filename);
 	try {
 	    File file = new File(filename);
 	    if (!file.exists()) {

@@ -13,6 +13,7 @@ public class JSONWriter<T> {
     
     public void write(T object, String filename) {
 	// .setPrettyPrinting()
+	System.out.println("Write " + filename);
 	Gson gson = new GsonBuilder().create();
 	File file = new File(filename);
 	BufferedWriter writer = null;

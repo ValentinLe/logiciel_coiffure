@@ -52,6 +52,7 @@ public class SaveData {
     }
     
     public static List<String> loadSavePoints(String filename) {
+		System.out.println("Read " + filename);
 	List<String> savePoints = new ArrayList<>();
 	File file = new File(filename);
 	BufferedReader br;
@@ -71,6 +72,7 @@ public class SaveData {
     }
     
     public static void writeSavePoints(String filename, List<String> savePoints) {
+		System.out.println("Write " + filename);
 	FileWriter fw;
 	File file = new File(filename);
 	try {

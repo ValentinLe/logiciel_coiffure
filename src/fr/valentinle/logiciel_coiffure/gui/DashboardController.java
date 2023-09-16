@@ -98,12 +98,12 @@ public class DashboardController implements Initializable, DashboardListener {
 
 	protected Config config;
 
-	protected static String clientFilename = "resources/data/clients.json";
-	protected static String salesFilename = "resources/data/sales.json";
-	protected static String facturesFilename = "resources/data/factures.json";
-	protected static String savePointsFilename = "resources/config/points_sauvegarde.txt";
-	protected static String configFilename = "resources/config/config.json";
-	protected static String saveDataFilename = "resources/data/";
+	protected static String clientFilename = getJarPath() + "resources/data/clients.json";
+	protected static String salesFilename = getJarPath() + "resources/data/sales.json";
+	protected static String facturesFilename = getJarPath() + "resources/data/factures.json";
+	protected static String savePointsFilename = getJarPath() + "resources/config/points_sauvegarde.txt";
+	protected static String configFilename = getJarPath() + "resources/config/config.json";
+	protected static String saveDataFilename = getJarPath() + "resources/data/";
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -202,8 +202,8 @@ public class DashboardController implements Initializable, DashboardListener {
 
 	public static String getJarPath() {
 		try {
-			return new File(DashboardController.class.getProtectionDomain().getCodeSource().getLocation().toURI())
-					.getParent() + "/";
+			return new File(new File(DashboardController.class.getProtectionDomain().getCodeSource().getLocation().toURI())
+					.getParent()).getParent() + "/";
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return "";
