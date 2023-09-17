@@ -196,7 +196,7 @@ public class ClientController implements Initializable, DashboardListener, Clien
 	}
 
 	public boolean createClient() {
-		if (!this.familyName.getText().strip().isEmpty() && !this.name.getText().trim().isEmpty()) {
+		if (!this.familyName.getText().trim().isEmpty() && !this.name.getText().trim().isEmpty()) {
 			this.client.setFamilyName(this.familyName.getText().trim());
 			this.client.setName(this.name.getText().trim());
 			this.client.setAddress(this.address.getText().trim());
